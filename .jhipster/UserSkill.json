@@ -1,0 +1,31 @@
+{
+  "name": "UserSkill",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "skillId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "skillLevel",
+      "fieldType": "SkillLevel",
+      "fieldValues": "NOVICE,INTERMEDIATE,ADVANCED,EXPERT"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210313124020",
+  "entityTableName": "user_skill",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dataapp",
+  "applications": "*",
+  "microserviceName": "dataapp"
+}

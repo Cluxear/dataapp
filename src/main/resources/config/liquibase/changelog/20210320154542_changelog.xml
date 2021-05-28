@@ -1,0 +1,48 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="cluxe (generated)" id="1616255162187-1">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_authority_name"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-2">
+        <dropForeignKeyConstraint baseTableName="jhi_persistent_audit_evt_data" constraintName="fk_evt_pers_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-3">
+        <dropForeignKeyConstraint baseTableName="jhi_user_authority" constraintName="fk_user_id"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-4">
+        <dropUniqueConstraint constraintName="ux_user_email" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-5">
+        <dropUniqueConstraint constraintName="ux_user_login" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-6">
+        <dropTable tableName="jhi_authority"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-7">
+        <dropTable tableName="jhi_persistent_audit_event"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-8">
+        <dropTable tableName="jhi_persistent_audit_evt_data"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-9">
+        <dropTable tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-10">
+        <dropTable tableName="jhi_user_authority"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-11">
+        <dropTable tableName="skill_job_post"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-12">
+        <dropTable tableName="user_application"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-13">
+        <dropTable tableName="user_interview"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-14">
+        <dropTable tableName="user_job_post"/>
+    </changeSet>
+    <changeSet author="cluxe (generated)" id="1616255162187-15">
+        <dropTable tableName="user_skill"/>
+    </changeSet>
+</databaseChangeLog>

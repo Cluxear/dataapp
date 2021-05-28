@@ -1,0 +1,37 @@
+entity UserSkill { 
+
+	userId String,
+    skillId Long,
+    skillLevel SkillLevel
+}
+entity UserApplication { 
+    userId String,
+    applicationId Long,
+    jobPostId Long
+}
+ 
+
+
+entity UserInterview {
+	userId String,
+    interviewId Long
+}
+
+entity SkillJobPost { 
+
+	skillId Long,
+    jobPostId Long
+}
+enum SkillLevel {
+
+	NOVICE,
+	INTERMEDIATE,
+	ADVANCED,
+	EXPERT
+}
+
+// Use Data Transfer Objects (DTO)
+ dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl

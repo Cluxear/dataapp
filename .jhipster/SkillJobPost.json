@@ -1,0 +1,26 @@
+{
+  "name": "SkillJobPost",
+  "fields": [
+    {
+      "fieldName": "skillId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "jobPostId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210313124320",
+  "entityTableName": "skill_job_post",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dataapp",
+  "applications": "*",
+  "microserviceName": "dataapp"
+}

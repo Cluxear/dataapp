@@ -1,0 +1,30 @@
+{
+  "name": "UserJobPost",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "applicationId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "jobPostId",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210313124120",
+  "entityTableName": "user_job_post",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "dataapp",
+  "applications": "*",
+  "microserviceName": "dataapp"
+}
