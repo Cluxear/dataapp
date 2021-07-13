@@ -46,4 +46,13 @@ public interface UserApplicationService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Delete the  userApplication with application "id".
+     *
+     * @param id the application id of the entity.
+     */
+    void deleteByApplicationId(Long id);
+
+
 }

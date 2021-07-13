@@ -1,0 +1,17 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="Walid (generated)" id="1624057752302-3">
+        <addColumn tableName="application_interview">
+            <column name="recruter_id" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="Walid (generated)" id="1624057752302-4">
+        <dropColumn columnName="role" tableName="application_interview"/>
+    </changeSet>
+    <changeSet author="Walid (generated)" id="1624057752302-1">
+        <dropNotNullConstraint columnDataType="int" columnName="skill_level" tableName="user_skill"/>
+    </changeSet>
+    <changeSet author="Walid (generated)" id="1624057752302-2">
+        <dropDefaultValue columnDataType="int" columnName="skill_level" tableName="user_skill"/>
+    </changeSet>
+</databaseChangeLog>

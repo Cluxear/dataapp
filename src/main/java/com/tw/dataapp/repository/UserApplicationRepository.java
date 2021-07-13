@@ -18,4 +18,5 @@ public interface UserApplicationRepository extends JpaRepository<UserApplication
     List<UserApplication> findByUserId(String userId);
     List<UserApplication> findByJobPostId(Long jobPostId);
     UserApplication findByApplicationId(Long applicationId);
+    void deleteUserApplicationByApplicationId( Long applicationId);
 }

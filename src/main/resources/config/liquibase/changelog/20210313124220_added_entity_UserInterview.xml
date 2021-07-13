@@ -22,6 +22,9 @@
             <column name="interview_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="recruter_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="role" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

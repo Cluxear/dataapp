@@ -5,6 +5,9 @@ import com.tw.dataapp.service.dto.UserApplications;
 import com.tw.dataapp.web.rest.errors.BadRequestAlertException;
 import com.tw.dataapp.service.dto.UserApplicationDTO;
 
+import com.tw.dataapp.web.rest.feignClients.models.CandidateScoring;
+import com.tw.dataapp.web.rest.feignClients.models.Jobpost;
+import com.tw.dataapp.web.rest.feignClients.models.User;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -12,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -52,11 +56,36 @@ public class UserApplicationResource {
             throw new BadRequestAlertException("A new userApplication cannot already have an ID", ENTITY_NAME, "idexists");
         }
         UserApplicationDTO result = userApplicationService.save(userApplicationDTO);
+
+        /** Attribute score to application **/
+
+
         return ResponseEntity.created(new URI("/api/user-applications/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+    /**
+     * {@code POST  /user-applications} : Attribute score to the candidate's job application .
+     *
+     * @param userAppDTO the userApplicationDTO to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new userApplicationDTO, or with status {@code 400 (Bad Request)} if the userApplication has already an ID.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+        @PostMapping("/user-applications/scoring")
+        private List<Double> attributeScoreToApplication(@RequestBody UserApplicationDTO userAppDTO) throws URISyntaxException {
+            RestTemplate restTemplate = new RestTemplate();
+            CandidateScoring candidateScoring = new CandidateScoring();
+            User user = new User();
+            user.setSkills("Angular ,Bootstrap , html 5 ,CSS3 ,Javascript , JQUERY ,C ,C++ , C# ,Python Django,Flask ,Java ,PHP(OOP). Spark, Kafka, MongoDB,  Oracle, MS SQL Server, MySQL, Access, Postgres. Windows, LINUX  Tomcat  UML-Merise-SCRUM VMware Vcentre Server ,Vsphere...");
+            Jobpost jobpost = new Jobpost();
+            jobpost.setSkills("PL/SQL, Java. Oracle PL/SQL Java Script Shell Maven, Jenkins Jira, Mantis");
+            candidateScoring.setUser(user);
+            candidateScoring.setJobpost(jobpost);
 
+
+            /*  */
+        return (List<Double>) restTemplate.postForEntity("http://localhost:5000/matching", candidateScoring, List.class);
+        }
     /**
      * {@code PUT  /user-applications} : Updates an existing userApplication.
      *
@@ -153,6 +182,18 @@ public class UserApplicationResource {
     public ResponseEntity<Void> deleteUserApplication(@PathVariable Long id) {
         log.debug("REST request to delete UserApplication : {}", id);
         userApplicationService.delete(id);
+        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+    /**
+     * {@code DELETE  /user-applications/application:id} : delete the  userApplication with application Id id.
+     *
+     * @param id the application Id of the userApplicationDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping("/user-applications/application/{id}")
+    public ResponseEntity<Void> deleteUserApplicationWithApplicationId(@PathVariable Long id) {
+        log.debug("REST request to delete UserApplication : {}", id);
+        userApplicationService.deleteByApplicationId(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }

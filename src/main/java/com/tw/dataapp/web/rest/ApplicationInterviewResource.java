@@ -101,6 +101,30 @@ public class ApplicationInterviewResource {
         Optional<ApplicationInterviewDTO> userInterviewDTO = applicationInterviewService.findOne(id);
         return ResponseUtil.wrapOrNotFound(userInterviewDTO);
     }
+    /**
+     * {@code GET  /application-interviews/application/:id} : get the "id" userInterview.
+     *
+     * @param id the id of the application of the userInterviewDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the userInterviewDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/application-interviews/application/{id}")
+    public List<ApplicationInterviewDTO> getApplicationInterviews(@PathVariable Long id) {
+        log.debug("REST request to get UserInterview : {}", id);
+
+        return applicationInterviewService.findByApplicationId(id);
+    }
+    /**
+     * {@code GET  /application-interviews/interview/:id} : get the "interview_id" userInterview.
+     *
+     * @param id the id of the application of the userInterviewDTO to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the userInterviewDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/application-interviews/interview/{id}")
+    public ResponseEntity<ApplicationInterviewDTO> getApplicationInterviewByInterview(@PathVariable Long id) {
+        log.debug("REST request to get UserInterview : {}", id);
+
+        return ResponseUtil.wrapOrNotFound(applicationInterviewService.findByInterviewId(id));
+    }
 
     /**
      * {@code DELETE  /user-interviews/:id} : delete the "id" userInterview.
@@ -112,6 +136,19 @@ public class ApplicationInterviewResource {
     public ResponseEntity<Void> deleteUserInterview(@PathVariable Long id) {
         log.debug("REST request to delete UserInterview : {}", id);
         applicationInterviewService.delete(id);
+        return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
+    }
+
+    /**
+     * {@code DELETE  /user-interviews/interview/:id} : delete the "id" interviewId userInterview.
+     *
+     * @param id the id of the userInterviewDTO to delete.
+     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
+     */
+    @DeleteMapping("/user-interviews/interview/{id}")
+    public ResponseEntity<Void> deleteUserInterviewWhereInterviewId(@PathVariable Long id) {
+        log.debug("REST request to delete UserInterview : {}", id);
+        applicationInterviewService.deleteByInterviewId(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString())).build();
     }
 }

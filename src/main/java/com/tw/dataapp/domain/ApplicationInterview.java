@@ -28,18 +28,16 @@ public class ApplicationInterview implements Serializable {
     @Column(name = "interview_id")
     private Long interviewId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private InterviewRole role;
+    @Column(name = "recruter_id")
+    private String recruterId;
 
 
-
-    public InterviewRole getRole() {
-        return role;
+    public String getRecruterId() {
+        return recruterId;
     }
 
-    public void setRole(InterviewRole role) {
-        this.role = role;
+    public void setRecruterId(String recruterId) {
+        this.recruterId = recruterId;
     }
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

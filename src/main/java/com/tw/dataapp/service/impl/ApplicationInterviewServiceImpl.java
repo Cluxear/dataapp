@@ -60,8 +60,28 @@ public class ApplicationInterviewServiceImpl implements ApplicationInterviewServ
     }
 
     @Override
+    public List<ApplicationInterviewDTO> findByApplicationId(Long appId) {
+
+        return userInterviewRepository.findApplicationInterviewByApplicationId(appId).stream()
+            .map(userInterviewMapper::toDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<ApplicationInterviewDTO> findByInterviewId(Long interviewId) {
+        return userInterviewRepository.findApplicationInterviewByInterviewId(interviewId)
+            .map(userInterviewMapper::toDto);
+    }
+
+    @Override
     public void delete(Long id) {
         log.debug("Request to delete UserInterview : {}", id);
         userInterviewRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteByInterviewId(Long id) {
+        log.debug("Request to delete UserInterview : {}", id);
+        userInterviewRepository.deleteAllByInterviewId(id);
+
     }
 }

@@ -35,10 +35,22 @@ public interface ApplicationInterviewService {
      */
     Optional<ApplicationInterviewDTO> findOne(Long id);
 
+    List<ApplicationInterviewDTO> findByApplicationId(Long appId);
+
+    Optional<ApplicationInterviewDTO>  findByInterviewId( Long interviewId);
+
     /**
      * Delete the "id" userInterview.
      *
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Delete the "id" interviewId userInterview.
+     *
+     * @param id the id of the entity.
+     */
+    void deleteByInterviewId(Long id);
+
 }

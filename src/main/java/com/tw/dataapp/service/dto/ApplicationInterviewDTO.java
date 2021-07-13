@@ -2,6 +2,7 @@ package com.tw.dataapp.service.dto;
 
 import com.tw.dataapp.domain.ApplicationInterview;
 import com.tw.dataapp.domain.enumeration.InterviewRole;
+import lombok.ToString;
 
 import java.io.Serializable;
 
@@ -16,15 +17,15 @@ public class ApplicationInterviewDTO implements Serializable {
 
     private Long interviewId;
 
-    private InterviewRole interviewRole;
+    private String recruterId;
 
 
-    public InterviewRole getInterviewRole() {
-        return interviewRole;
+    public String getRecruterId() {
+        return recruterId;
     }
 
-    public void setInterviewRole(InterviewRole interviewRole) {
-        this.interviewRole = interviewRole;
+    public void setRecruterId(String recruterId) {
+        this.recruterId = recruterId;
     }
 
     public Long getId() {
@@ -39,7 +40,7 @@ public class ApplicationInterviewDTO implements Serializable {
         return applicationId;
     }
 
-    public void setUserId(long applicationId) {
+    public void setApplicationId(long applicationId) {
         this.applicationId = applicationId;
     }
 
@@ -73,7 +74,7 @@ public class ApplicationInterviewDTO implements Serializable {
     public String toString() {
         return "UserInterviewDTO{" +
             "id=" + getId() +
-            ", userId='" + getApplicationId() + "'" +
+            ", applicationId='" + getApplicationId() + "'" +
             ", interviewId=" + getInterviewId() +
             "}";
     }

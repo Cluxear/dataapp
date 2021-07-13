@@ -86,4 +86,9 @@ public class UserApplicationServiceImpl implements UserApplicationService {
         log.debug("Request to delete UserApplication : {}", id);
         userApplicationRepository.deleteById(id);
     }
+
+    @Override
+    public void deleteByApplicationId(Long id) {
+        userApplicationRepository.deleteUserApplicationByApplicationId(id);
+    }
 }
